@@ -19,21 +19,24 @@ export const getFilteredTrips = ({trips, filters}) => {
     output = output.filter(trip => 
       trip.days >= from && 
       trip.days <= to);
+    
   }
     
   // TODO - filter by tags
-  if(filters.tags > 1){
-    const tags = filters.tags;
-
-    output = output.filter(trip => trip.tags.includes(tags));
+  if(filters.tags){
+    for(let tag of filters.tags) {
+      output = output.filter(trip => trip.tags.includes(tag));
+    }
+    // console.log(output.filter(trip => trip.tags.includes(filters.tags)));
   }
+  
   // TODO - sort by cost descending (most expensive goes first)
   output.sort((aTrip, bTrip ) => {
-    const aTripInt = aTrip.cost.replace('$','').replace(',', '');
-    const bTripInt = bTrip.cost.replace('$','').replace(',', '');
+    const aTripInt = parseInt(aTrip.cost.replace('$','').replace(',', ''));
+    const bTripInt = parseInt(bTrip.cost.replace('$','').replace(',', ''));
 
-    if (parseInt(aTripInt) > parseInt(bTripInt)) return -1;
-    if (parseInt(aTripInt) < parseInt(bTripInt)) return 1;
+    if (aTripInt > bTripInt) return -1;
+    if (aTripInt < bTripInt) return 1;
     else return 0;
   });
 

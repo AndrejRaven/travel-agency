@@ -20,7 +20,7 @@ import {setMultipleStates} from './redux/globalRedux';
 
 class App extends React.Component {
   static propTypes = {
-    trips: PropTypes.array,
+    trips: PropTypes.array, 
     setStates: PropTypes.func,
   }
 

@@ -11,7 +11,6 @@ describe('Component TripSummary', () => {
   const expectedTags = ['apple', 'orange', 'banan']; 
 
   it('should generate link with id', () => {
-    
     const component = shallow(<TripSummary id={expectedId} tags={expectedTags} name={expectedName} cost={expectedCost} days={expectedDays} image={expectedImage} />);
     const linkTo = component.find('.link').prop('to');
     const renderedId = linkTo.slice(6, linkTo.length);

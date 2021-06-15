@@ -8,7 +8,7 @@ const OrderOptionText = ({setOptionValue, currentValue}) => {
   return (
     <div className={styles.component}>
       <input type='text' className={styles.input}
-        value={currentValue}      
+        value={currentValue}    
         onChange={event => setOptionValue(event.currentTarget.value)} />
     </div>  
   );
